@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'elementos',
+    path: '',
     loadChildren: () => import('./elementos/elementos.module').then(m => m.ElementosModule)
   }
 ];
