@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ElementosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/s', function () {
-    return view('welcome');
+Route::prefix('elementos')->group(function(){
+    Route::get('/', [ElementosController::class, 'index']);
+    Route::post('/', [ElementosController::class, 'store']);
+    Route::delete('/delete',[ ElementosController::class, 'destroy']);
+    Route::put('update/{id}',[ ElementosController::class, 'update']);
 });

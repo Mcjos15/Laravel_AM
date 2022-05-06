@@ -1,7 +1,9 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ElementosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// Route::prefix('elementos')->group(function(){
+//     Route::get('/', [ElementosController::class, 'index']);
+//     Route::post('/save', [ElementosController::class, 'create']);
+//     Route::delete('/delete',[ ElementosController::class, 'destroy']);
+//     Route::put('/{id}',[ ElementosController::class, 'update']);
+// });
+
+
