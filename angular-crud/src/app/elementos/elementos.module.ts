@@ -6,7 +6,7 @@ import { ElementoComponent } from './pages/elemento/elemento.component';
 import { ElementosRoutingModule } from './elementos-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from './pages/home/home.component';
-
+import {DataTablesModule} from 'angular-datatables';
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { HomeComponent } from './pages/home/home.component';
   imports: [
     CommonModule,
     ElementosRoutingModule,
-    MaterialModule
+    MaterialModule,
+    DataTablesModule
   ]
 })
 export class ElementosModule { }
