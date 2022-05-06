@@ -22,8 +22,13 @@ import {MatSelectModule} from '@angular/material/select';
     MatButtonModule,
     MatIconModule,
     MatListModule,
-    
-    
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatProgressSpinnerModule,
+    MatGridListModule
+
+
   ]
 })
 export class MaterialModule { }

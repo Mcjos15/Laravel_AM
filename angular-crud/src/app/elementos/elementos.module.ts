@@ -7,7 +7,7 @@ import { ElementosRoutingModule } from './elementos-routing.module';
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from './pages/home/home.component';
 import {DataTablesModule} from 'angular-datatables';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,8 @@ import {DataTablesModule} from 'angular-datatables';
     CommonModule,
     ElementosRoutingModule,
     MaterialModule,
-    DataTablesModule
+    DataTablesModule,
+    FlexLayoutModule
   ]
 })
 export class ElementosModule { }

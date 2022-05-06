@@ -27,7 +27,11 @@ const routes: Routes = [
       },
       {
         path: ':id',
-        component:ElementoComponent
+        component: ElementoComponent
+      },
+      {
+        path: '**',
+        redirectTo: 'listado'
       }
     ]
   }
@@ -39,7 +43,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
 
   ],
-  exports:[
+  exports: [
     RouterModule
   ]
 })

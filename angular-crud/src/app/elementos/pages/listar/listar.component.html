@@ -6,8 +6,9 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Title</th>
-                        <th>Body</th>
+                        <th>Nombre</th>
+                        <th>Peso</th>
+                        <th>Simbolo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -15,6 +16,9 @@
                         <td>{{ post.id }}</td>
                         <td>{{ post.title }}</td>
                         <td>{{ post.body }}</td>
+                        <td><button mat-button color="info" [routerLink]="['/editar',post.id ]">
+                      Editar
+                  </button></td>
                     </tr>
                 </tbody>
             </table>
