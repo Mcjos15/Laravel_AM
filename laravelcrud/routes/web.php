@@ -18,9 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
 Route::prefix('elementos')->group(function(){
     Route::get('/', [ElementosController::class, 'index']);
     Route::post('/', [ElementosController::class, 'store']);
-    Route::delete('/delete',[ ElementosController::class, 'destroy']);
-    Route::put('update/{id}',[ ElementosController::class, 'update']);
+    Route::post('/delete/{id}',[ ElementosController::class, 'destroy']);
+    Route::post('/update',[ ElementosController::class, 'update']);
 });

@@ -40,9 +40,6 @@ class ElementosController extends Controller
     public function store(Request $request)
     {
        
-        // $elementos = Elementos::create($request->all());
-
-
         $elementos= new Elementos();
         $elementos->nombre = $request->post('nombre');
         $elementos->peso = $request->post('peso');
@@ -56,7 +53,6 @@ class ElementosController extends Controller
         );
 
         return response(json_encode($response), 200);
-
     }
 
     /**
@@ -88,18 +84,23 @@ class ElementosController extends Controller
      * @param  \App\Models\Elementos  $elementos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request)
     {
         $elementos= new Elementos();
-        $elementos->nombre = $request->post('nombre');
-        $elementos->peso = $request->post('peso');
-        $elementos->simbolo=$request->post('simbolo');
+        $idElemento = $request->post('idElemento');
+        $nombre = $request->post('nombre');
+        $peso = $request->post('peso');
+        $simbolo=$request->post('simbolo');
 
-        Elementos::find($id)->update($elementos);
-        return response()->json([
-            'message' => "Successfully updated",
-            'success' => true
-        ], 200);
+        DB::select("call sp_edit_elemento('$idElemento','$nombre','$peso','$simbolo')");
+
+       $response = array(
+            "message" => "Actualizado exitosamente",
+            "success" => true
+        );
+
+        return response(json_encode($response), 200)->header('Content-type', 'text/plain');
+
     }
 
     /**
@@ -110,10 +111,15 @@ class ElementosController extends Controller
      */
     public function destroy($id)
     {
-        $res = Elemento::find($id)->delete();
-      return response()->json([
-          'message' => "Successfully deleted",
-          'success' => true
-      ], 200);
+
+       DB::select("call sp_detroy_elemento('$id')");
+       
+    $response = array(
+        "msg" => "Successfully deleted",
+        'success' => true,
+        'token'=> csrf_token() 
+    );
+
+    return response(json_encode($response), 200)->header('Content-type', 'text/plain');
     }
 }

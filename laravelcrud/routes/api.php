@@ -20,11 +20,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::prefix('elementos')->group(function(){
-//     Route::get('/', [ElementosController::class, 'index']);
-//     Route::post('/save', [ElementosController::class, 'create']);
-//     Route::delete('/delete',[ ElementosController::class, 'destroy']);
-//     Route::put('/{id}',[ ElementosController::class, 'update']);
-// });
+Route::prefix('elementos')->group(function(){
+    Route::get('/', [ElementosController::class, 'index']);
+    Route::post('/', [ElementosController::class, 'store']);
+    Route::post('/delete/{id}',[ ElementosController::class, 'destroy']);
+    Route::post('/update',[ ElementosController::class, 'update']);
+});
 
 

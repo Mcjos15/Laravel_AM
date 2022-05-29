@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
+import { ElementosServiceService } from '../../services/elementos-service.service';
 declare var $: any;
 @Component({
   selector: 'app-listar',
@@ -15,7 +16,7 @@ export class ListarComponent implements OnInit, OnDestroy {
   dtTrigger: Subject<any> = new Subject<any>();
   posts: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private elementService:ElementosServiceService) { }
 
   ngOnInit(): void {
     this.dtOptions = {
@@ -25,8 +26,7 @@ export class ListarComponent implements OnInit, OnDestroy {
       lengthMenu: [5, 10, 25]
     };
 
-    this.http.get('http://jsonplaceholder.typicode.com/posts')
-      .subscribe(posts => {
+    this.elementService.getElementos().subscribe(posts => {
         this.posts = posts;
         console.log(this.posts);
 

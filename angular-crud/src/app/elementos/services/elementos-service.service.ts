@@ -13,7 +13,8 @@ export class ElementosServiceService {
   constructor(private http: HttpClient) { }
 
   getElementos(): Observable<any[]> {
-    return this.http.get<any>(`${this.baseURL}/heroe`);
+    console.log(this.http.get<Elemento[]>(`${this.baseURL}`));
+    return this.http.get<Elemento[]>(`${this.baseURL}`);
   }
   getElementosId(id: string): Observable<any> {
     return this.http.get<any>(`${this.baseURL}/heroe`);
